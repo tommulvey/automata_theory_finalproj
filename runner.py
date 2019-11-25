@@ -1,18 +1,18 @@
-import requests
-import urllib.request
-import time
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
+# custom classes import
+from RNA import RNA
+from WebDriver import WebDriver
+# std libraries import
+import os, sys, time
 
 
-dna_url = 'https://faculty.ucr.edu/~mmaduro/random.htm'
-opts = webdriver.ChromeOptions()
-opts.add_argument("headless")
-driver = webdriver.Chrome(chrome_options=opts)
-driver.get(dna_url)
-#time.sleep(10)
 
-element = driver.find_element_by_name("reset").click()
-t = driver.find_element_by_name("sequence").get_attribute("value")
-window_before = driver.window_handles[0]
-print(t)
+DRIVER = WebDriver()
+RNA = RNA()
+
+for i in range(1):
+    DRIVER.click_reset()
+    dna = DRIVER.get_textarea()
+    print("DNA : " + dna + "\n-------------------")
+    RNA.change_dna_string(dna)
+    print("RNA : " + RNA.DNA_to_RNA() + "\n-------------------")
+    
