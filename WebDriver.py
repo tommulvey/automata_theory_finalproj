@@ -58,7 +58,7 @@ class WebDriver(object):
             raise Exception("oopsie woopsie we couldnt get the text!! :-( ")
 
     
-    def GenerateSequenceSize(self,a=500,b=1500,n=3):
+    def GenerateSequenceSize(self,a=500,b=4000,n=3):
         # we need string size mod 3 == 0. this does dat
         if b-a < n:
             raise Exception('{} is too big'.format(n))

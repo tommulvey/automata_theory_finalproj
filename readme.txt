@@ -4,3 +4,5 @@ language : python3
 
 2) install chrome webdriver
 https://sites.google.com/a/chromium.org/chromedriver/downloads
+
+3) python3 runner.py
