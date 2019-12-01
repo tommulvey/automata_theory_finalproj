@@ -16,3 +16,6 @@ for i in range(1):
     RNA.change_dna_string(dna)
     print("RNA >> " + RNA.DNA_to_RNA() + "\n-------------------")
     print("AMINO ACIDS >> \n\t" + '\n\t'.join(RNA.RNA_TO_AA()) + "\n-------------------")
+print("AMINO ACIDS CONVERTED>>\n")
+Amino_Acids=RNA.aa_names()
+print("\n-------------------")

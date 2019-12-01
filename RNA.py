@@ -41,3 +41,40 @@ class RNA():
             self.amino_acids.append(match.group(0))
         # return list of amino acids
         return self.amino_acids
+    def aa_names(self):
+        n=3
+        names={
+            "UUU":"Phenylalanine","UCU":"Serine","UAU":"Tyrosine","UGU":"Cysteine",
+            "UUC":"Phenylalanine","UCC":"Serine","UAC":"Tyrosine","UGC":"Cysteine",
+            "UUA":"Leucine"      ,"UCA":"Serine","UAA":"Stop"    ,"UGA":"Stop",
+            "UUG":"Leucine"      ,"UCG":"Serine","UAG":"Stop"    ,"UGG":"Tryptophan",
+            "CUU":"Leucine"     ,"CCU":"Proline","CAU":"Histidine","CGU":"Arginine",
+            "CUC":"Leucine"     ,"CCC":"Proline","CAC":"Histidine","CGC":"Arginine",
+            "CUA":"Leucine"     ,"CCA":"Proline","CAA":"Glutamine","CGA":"Arginine",     
+            "CUG":"Leucine"     ,"CCG":"Proline","CAG":"Glutamine","CGG":"Arginine",
+            "AUU":"Isoleucine","ACU":"Threonine","AAU":"Asparagine","AGU":"Serine",
+            "AUC":"Isoleucine","ACC":"Threonine","AAC":"Asparagine","AGC":"Serine",
+            "AUA":"Isoleucine","ACA":"Threonine","AAA":"Lysine"    ,"AGA":"Arginine",  
+            "AUG":"Methionine","ACG":"Threonine","AAG":"Lysine"    ,"AGG":"Arginine",
+            "GUU":"Valine"      ,"GCU":"Alanine","GAU":"Aspartate" ,"GGU":"Glycine",
+            "GUC":"Valine"      ,"GCC":"Alanine","GAC":"Aspartate" ,"GGC":"Glycine",
+            "GUA":"Valine"      ,"GCA":"Alanine","GAA":"Glutamate" ,"GGA":"Glycine",
+            "GUG":"Valine"      ,"GCG":"Alanine","GAG":"Glutamate" ,"GGG":"Glycine"}
+        for sequence in self.amino_acids:
+           new_sequence=[sequence[i:i+n] for i in range(0, len(sequence), n)]
+           for codon in new_sequence:
+               if names[codon]!="Stop":
+                   print(names[codon],end=" ")
+               else:
+                   continue
+           print("\n")
+               
+        
+                
+                
+            
+
+
+
+
+            
