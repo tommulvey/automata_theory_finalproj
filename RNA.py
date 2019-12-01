@@ -33,7 +33,18 @@ class RNA():
         self.rna_string = s
         return self.rna_string
 
+    def splice(self):
+        # remove anything in transcibed rna string that starts with GU, ending with AG
+        s = self.rna_string
+        # regex is (GU)([A-Z])+?(?=AG)(AG)
+        s = re.sub('(GU)([A-Z])+?(?=AG)(AG)', '', s)
+        # print("s==rna? : " + s==self.rna_string )  
+        self.splice_string = s
+        return self.splice_string
+
     def RNA_TO_AA(self):
+        # use splice string
+        self.rna_string = self.splice_string
         # find all substrings of AUG,...,UGA|UGG|UAA
         #  reminder | is or in regex
         r = re.compile(r"(AUG)([A-Z]{3})+?(?=UGA|UAA|UAG)(UGA|UAA|UAG)")
