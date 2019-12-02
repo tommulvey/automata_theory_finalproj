@@ -1,3 +1,7 @@
+import colorama
+from colorama import Fore, Back, Style
+colorama.init()
+
 import re
 '''
 RNA CLASS. All methods (like convert dna to rna) are here.
@@ -53,6 +57,7 @@ class RNA():
         # return list of amino acids
         return self.amino_acids
     def aa_names(self):
+        print(Fore.LIGHTGREEN_EX)
         n=3
         names={
             "UUU":"Phenylalanine","UCU":"Serine","UAU":"Tyrosine","UGU":"Cysteine",
@@ -78,7 +83,8 @@ class RNA():
                    print(names[codon],end=" ")
                else:
                    continue
-           print("\n")
+           print("\n\t")
+        print(Style.RESET_ALL)
                
         
                 

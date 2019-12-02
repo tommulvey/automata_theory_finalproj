@@ -33,7 +33,7 @@ class WebDriver(object):
             # first get new len
             length = self.GenerateSequenceSize()
             # enter val
-            print("length of input = " + str(length))
+            # print("length of input = " + str(length))
             size = self.driver.find_element_by_name(self.size_input)
             size.clear()
             size.send_keys(str(length))
