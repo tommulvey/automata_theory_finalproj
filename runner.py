@@ -2,7 +2,7 @@
 from RNA import RNA
 from WebDriver import WebDriver
 # std libraries import
-import os, sys, time
+import os, sys, time, re
 import colorama
 from colorama import Fore, Back, Style
 colorama.init()
@@ -17,15 +17,29 @@ RNA = RNA()
 cls()
 DRIVER.click_reset()
 dna = DRIVER.get_textarea()
-print("DNA >> \n\t" + Fore.BLUE + dna + Style.RESET_ALL + "\n-----------------------------\n")
+print("DNA (GENE) >> \n\t" + Fore.BLUE + dna + Style.RESET_ALL + "\n-----------------------------\n")
 RNA.change_dna_string(dna)
 
 # MAKE RNA FROM DNA
-print("RNA UNSPLICED >> \n\t" + Fore.CYAN + RNA.DNA_to_RNA() + Style.RESET_ALL + "\n-----------------------------\n")
+a = RNA.DNA_to_RNA()
+regex = re.compile(r"(GU)([A-Z])+?(?=AG)(AG)", re.I)
+i = 0; s =""
+for m in regex.finditer(a):
+    s+="".join([a[i:m.start()], Fore.CYAN, a[m.start():m.end()], Fore.LIGHTMAGENTA_EX])
+    i = m.end()
+print("RNA UNSPLICED >> \n\t" + Fore.LIGHTMAGENTA_EX + "".join([s, a[m.end():], Style.RESET_ALL ]) + Style.RESET_ALL + "\n-----------------------------\n")
 
 
 # SPLICE THE RNA
-print("RNA SPLICED  >> \n\t" + Fore.LIGHTMAGENTA_EX + RNA.splice() + Style.RESET_ALL + "\n-----------------------------\n")
+a = RNA.splice()
+# print("RNA UNSPLICED >> \n\t" + Fore.CYAN + a + Style.RESET_ALL + "\n-----------------------------\n")
+regex = re.compile(r"(AUG)([A-Z]{3})+?(?=UGA|UAA|UAG)(UGA|UAA|UAG)", re.I)
+i = 0; s =""
+for m in regex.finditer(a):
+    s+="".join([a[i:m.start()], Fore.YELLOW, a[m.start():m.end()], Fore.LIGHTMAGENTA_EX])
+    i = m.end()
+print("RNA UNSPLICED >> \n\t" + Fore.LIGHTMAGENTA_EX + "".join([s, a[m.end():], Style.RESET_ALL ]) + Style.RESET_ALL + "\n-----------------------------\n")
+# print("RNA SPLICED  >> \n\t" + Fore.LIGHTMAGENTA_EX + RNA.splice() + Style.RESET_ALL + "\n-----------------------------\n")
 
 
 # CONVERT TO AA AND SHOW CONVERSIONS

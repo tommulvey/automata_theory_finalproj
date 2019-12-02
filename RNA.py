@@ -76,8 +76,11 @@ class RNA():
             "GUC":"Valine"      ,"GCC":"Alanine","GAC":"Aspartate" ,"GGC":"Glycine",
             "GUA":"Valine"      ,"GCA":"Alanine","GAA":"Glutamate" ,"GGA":"Glycine",
             "GUG":"Valine"      ,"GCG":"Alanine","GAG":"Glutamate" ,"GGG":"Glycine"}
+        c = 1
         for sequence in self.amino_acids:
            new_sequence=[sequence[i:i+n] for i in range(0, len(sequence), n)]
+           print("\t" + Fore.WHITE + str(c) + " : " + Fore.LIGHTGREEN_EX, end='')
+           c=c+1
            for codon in new_sequence:
                if names[codon]!="Stop":
                    print(names[codon],end=" ")
